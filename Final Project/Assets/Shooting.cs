@@ -13,7 +13,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         float CharacterAmmo = Mc.GetAmmo();
-        if(Input.GetButtonDown("Fire1") && (CharacterAmmo != 0) ){
+        if(Input.GetButtonDown("Fire1") && (CharacterAmmo > 0) ){
             Shoot();
             Mc.SetAmmo(CharacterAmmo -1);
         }
