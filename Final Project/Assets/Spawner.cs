@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject objectPrefab;
+    [SerializeField] float waitTime;
     [SerializeField] float minSpawnRangeX;
     [SerializeField] float maxSpawnRangeX;
     [SerializeField] float minSpawnRangeY;
@@ -19,7 +20,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(SpawnAmmoRoutine());
         IEnumerator SpawnAmmoRoutine(){
             while(true){
-                yield return new WaitForSeconds(50);
+                yield return new WaitForSeconds(waitTime);
                 SpawnAmmoRandom();
                 SpawnAmmoRandom();
                 SpawnAmmoRandom();
