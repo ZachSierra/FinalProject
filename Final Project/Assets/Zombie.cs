@@ -15,13 +15,11 @@ public class Zombie : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter2D(Collider2D collider){
+    void OnCollisionEnter(Collision collider){
         GameObject other = collider.gameObject;
+        Debug.Log(other.tag);
         if(other.name == "MainCharacter"){
             other.GetComponent<MainCharacter>().SetHealth(other.GetComponent<MainCharacter>().GetHealth() - 5);
-        }
-        if(other.name == "Bullet(Clone)"){
-            Destroy(gameObject);
         }
     }
 }

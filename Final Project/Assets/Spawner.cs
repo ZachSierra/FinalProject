@@ -1,47 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject objectPrefab;
-    [SerializeField] float waitTime;
+    [SerializeField] int maxAmt = 30;
+    
     [SerializeField] float minSpawnRangeX;
     [SerializeField] float maxSpawnRangeX;
     [SerializeField] float minSpawnRangeY;
     [SerializeField] float maxSpawnRangeY;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
+        
         SpawnAmmo();
+
+    }
+    void FixedUpdate()
+    {
+        
     }
 
     void SpawnAmmo(){
-        StartCoroutine(SpawnAmmoRoutine());
-        IEnumerator SpawnAmmoRoutine(){
-            while(true){
-                yield return new WaitForSeconds(waitTime);
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-                SpawnAmmoRandom();
-            }
+        for ( int i = 0; i < maxAmt; i++){
+            SpawnAmmoRandom();
         }
     }
 
 
 
 
-    void SpawnAmmoRandom(){
+    public void SpawnAmmoRandom(){
 
        float randomX = Random.Range(minSpawnRangeX,maxSpawnRangeX);
        float randomY = Random.Range(minSpawnRangeY,maxSpawnRangeY);
 
        GameObject newAmmo = Instantiate(objectPrefab,new Vector3(randomX,randomY,0),Quaternion.identity);
-       Destroy(newAmmo,30);
        newAmmo.transform.eulerAngles = new Vector3(0,0,0);
     }
 }
