@@ -26,6 +26,7 @@ public class Creature : MonoBehaviour
     Rigidbody2D rb;
     public MainCharacter newtarget;
     [SerializeField] public ZombieSpawner zSpawner;
+    [SerializeField] public GameObject SFXBox;
 
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -86,6 +87,7 @@ public class Creature : MonoBehaviour
         GameObject other = collider.gameObject;
         if(other.name == "MainCharacter"){
             other.GetComponent<MainCharacter>().SetHealth(other.GetComponent<MainCharacter>().GetHealth() - 5);
+            gameObject.GetComponent<AudioSource>().Play();
         }
         
         if(other.name == "Bullet(Clone)"){

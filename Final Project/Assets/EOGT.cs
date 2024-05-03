@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EOGT : MonoBehaviour
 {
+    [SerializeField] GameEnding gEnding;
     void OnTriggerEnter2D(Collider2D collider){
         GameObject other = collider.gameObject;
         if(other.name == "MainCharacter"){
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            gEnding.ColorTransition(new Color(0,0,0), "GameEndingGood");
         }
     }
 }

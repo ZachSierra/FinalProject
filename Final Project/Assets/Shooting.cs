@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletForce = 20f;
     [SerializeField] MainCharacter Mc;
+    [SerializeField] GameObject shootAudio;
 
     // Update is called once per frame
     void Update()
@@ -23,5 +24,6 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        shootAudio.GetComponent<AudioSource>().Play();
     }
 }

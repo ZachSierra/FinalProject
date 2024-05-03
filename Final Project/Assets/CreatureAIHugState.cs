@@ -16,6 +16,7 @@ public class CreatureAIHugState : CreatureAIState
     {
         if(creatureAI.GetTarget() != null){
             creatureAI.myCreature.MoveCreatureToward(creatureAI.GetTarget().transform.position);
+            creatureAI.myCreature.SFXBox.GetComponent<AudioSource>().Play();
         }else{
             creatureAI.ChangeState(creatureAI.investigateState);
         }

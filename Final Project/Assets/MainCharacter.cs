@@ -12,16 +12,11 @@ public class MainCharacter : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] Camera cam;
     Vector2 mousePosition;
+    [SerializeField] GameEnding gEnding;
 
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +30,9 @@ public class MainCharacter : MonoBehaviour
         Vector2 lookDir = mousePosition - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+        if (health <= 0){
+            gEnding.StartTransitionOut("GameEndingBad");
+        }
     }
 
     public void Move(Vector2 movement){
