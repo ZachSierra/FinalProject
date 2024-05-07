@@ -8,7 +8,7 @@ public class EOGT : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider){
         GameObject other = collider.gameObject;
         if(other.name == "MainCharacter"){
-            gEnding.ColorTransition(new Color(0,0,0), "GameEndingGood");
+            gEnding.ColorTransition(new Color(0,0,0), "GameOverGood");
         }
     }
 }
